@@ -1,0 +1,20 @@
+table{
+    width: 100%;
+    table-layout:fixed;
+}
+
+td{
+    text-align: center;
+    padding: 10px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.img-div{
+    height: 160px;
+}
+image{
+    position: relative;
+    height: 100%;
+}
+

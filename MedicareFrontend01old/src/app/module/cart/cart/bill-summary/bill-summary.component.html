@@ -1,0 +1,35 @@
+<div class="bill-div" id="bill-div">
+    <h1>Bill Summary</h1>
+
+    <table class="cart-table table table-hover table-striped">
+        <thead>    
+            <tr>
+                <th>#id</th>
+                <th>ProductID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>qty</th>
+                <th>price</th>
+                <th>total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cart; index as i">
+                <td>{{i+1}}</td>
+                <td>{{item.id}}</td>
+                <td>{{item.product.name}}</td>
+                <td>{{item.product.brand}}</td>
+                <td>{{item.product.category.name}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.product.price | currency}}</td>
+                <td>{{item.quantity * item.product.price | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="alert alert-info">
+        Final bill 
+        Total: <strong>{{total | currency}}</strong>
+    </div>
+</div>

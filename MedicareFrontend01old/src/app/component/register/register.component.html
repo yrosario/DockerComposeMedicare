@@ -1,0 +1,63 @@
+<!-- Registration form -->
+
+<div class="reg-form-main" id="reg-form-main">
+
+
+
+    <!-- registration div -->
+    <div class="reg-div text-center mt-5" id="reg-div">
+        <!-- Registration form element -->
+        <form class="center-text" (ngSubmit)="registerUser(userForm)" #userForm="ngForm">
+        
+                        <!-- Page title -->
+            <Label for="reg-title display-4" class="reg-title" id="reg-title"><H1>Register New User</H1> </Label>
+        
+            <!-- Registration Success Message -->
+            <div class="reg-suc-msg-div alert alert-success" id="reg-scu-msg-div" *ngIf="isRegister">
+                <p>{{registerMsg}}</p>
+            </div>
+
+            <!-- Spinner redirecting page-->
+            <div class="spinner-border text-success" role="status" *ngIf="isRegister">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+
+            <!-- Registration failed message -->
+            <div class="reg-msg-div alert alert-danger" id="reg-msg-div" *ngIf="isRegister === false || !isPassMatch">
+                <p id="badFormInputMsg" *ngIf="isRegister == false">{{registerMsg}}</p>
+                <p id="invalidPassMsg" *ngIf="!isPassMatch">{{passMatchMsg}}</p>
+            </div>
+
+            
+            <label for="firstname" class="visually-hidden">firstname</label>
+            <input type="text" class="form-control form-control-lg " name="firstname-input" id="firstname-input" name="firstname" placeholder="firstname" ngModel required>
+            <br>
+    
+            <label for="firstname" class="visually-hidden">lastname</label>
+            <input type="text" class="form-control form-control-lg" name="lastname-input" id="lastname-input" name="lastname" placeholder="lastname" ngModel required>
+            <br>
+    
+            <label for="email" class="visually-hidden">email</label>
+            <input type="email" class="form-control form-control-lg" name="email-input" id="email-input" name="email" placeholder="email" ngModel email required>
+            <br>
+    
+            <label for="username" class="visually-hidden">username</label>
+            <input type="text" class="form-control form-control-lg" name="username-input" id="username-input" name="username" placeholder="username" ngModel required>
+            <br>
+    
+            <label for="password" class="visually-hidden">password</label>
+            <input type="password"  class="form-control form-control-lg" class="form-control" name="password-input" id="password-input" name="password" placeholder="password" ngModel required>
+            <br>
+    
+            <label for="retyPassword" class="visually-hidden">retype password</label>
+            <input type="password"class="form-control form-control-lg" name="retyPassword-input" id="retyPassowrd-input" name="retyPassword"  placeholder="retype Password"ngModel required>
+            <br>
+    
+            <div class="reg-btn-div d-grid" id="reg-btn-div">
+                <button type="submit" class="btn-submit btn btn-success" id="btsumit" [disabled]="!userForm.valid">Register</button>
+            </div>
+        </form>
+    </div>
+    
+    
+</div>

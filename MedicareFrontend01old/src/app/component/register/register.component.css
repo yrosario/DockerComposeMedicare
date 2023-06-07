@@ -1,0 +1,9 @@
+form{
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+input.ng-invalid.ng-touched
+{
+    border: 3px solid lightpink;
+}

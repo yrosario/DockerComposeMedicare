@@ -1,0 +1,33 @@
+/* .product-desc-id{
+    display: block;
+    width: 50%;
+} */
+
+/* .card{
+    max-width: 480px;
+    margin:auto;
+    text-align: center;
+    width: 200px;
+    
+} */
+
+img{
+    width: 140px;
+    height: 200px;
+}
+
+
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* .card:hover{
+    background-color: rgb(219, 219, 247);
+    filter:brightness(105%);
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: 5px 10px #2751b4;
+} */
+

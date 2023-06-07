@@ -1,0 +1,24 @@
+.login-form{
+    max-width: 480px;
+    margin:auto;
+}
+
+.login-username-input{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.login-password-input{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top:0px;
+}
+
+.alert-danger{
+    color:black;
+}
+
+input.ng-invalid.ng-touched.ng-dirty
+{
+    border: 3px solid lightpink;
+}

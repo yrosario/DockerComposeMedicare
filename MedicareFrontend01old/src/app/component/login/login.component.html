@@ -1,0 +1,48 @@
+<!-- Login component -->
+<div class="login-main" id = "login-main">
+
+
+
+    <!-- Login div -->
+    <div class="login-block text-center mt-5" id="login-block">
+    
+        <form class="login-form" (ngSubmit)="handleLogin(form)"  #form="ngForm">
+                <!-- Logo image -->
+            <img class="mt-4 mb-4 img rounded" src="/assets/img/page_logo.jpg" height="72" alt="Medicare Logo">
+            <!-- title -->
+            <h1 class="login-title h3 mb-3 font-weight-normal" id="login-title">Login</h1>
+        
+            <!-- Invalid login -->
+            <div class="alert alert-danger invalid-msg-div " id="invalid-msg" *ngIf="invalidLogin">
+                <p class="login-warning" id="login-warning">{{invalidMessage}}</p>
+            </div>
+    
+            <!-- login username  -->
+            <label for="username" class="login-label visually-hidden"  id="login-l" >
+                username
+            </label>
+            <div class="login-username" id="login-username">
+                <input type="text" class="login-username-input form-control" id="login-username-input" placeholder="username" name="username" required ngModel>
+            </div>
+    
+    
+            <!-- login password -->
+            <label for="password" class="login-label visually-hidden" id="login-l" >
+                password
+            </label>
+            <div class="login-password" id="login-password">
+                <input type="password" class="login-password-input form-control" id="login-password-input" placeholder="password" name="password" required ngModel>
+            </div>
+    
+            <!-- Login and register button -->
+            <div class="login-btn-div d-grid mt-3" id="login-btn-div">
+                <button type="submit" class="login-btn btn btn-primary" id="login-btn" [disabled]="!form.valid" >Login</button>
+                <button class="register-btn btn btn-success" id="register-btn" (click)="routeToRegister()">register</button>
+    
+            </div>
+        </form>
+    
+    </div>
+    
+</div>    
+    

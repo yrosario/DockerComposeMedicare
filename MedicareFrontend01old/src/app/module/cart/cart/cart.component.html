@@ -1,0 +1,43 @@
+
+<div class="empty-cart-msg alert alert-info" id="empty-cart-msg" *ngIf="cart.length === 0">
+    Your Cart is Empty
+</div>
+
+<div class="cart-div" id="cart-div" *ngIf="cart.length > 0">
+
+    <table class="cart-table table table-hover table-striped" id="cart-table">
+        <thead>
+            <tr>
+                <th>Item #</th>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Qty</th>
+                <th>price</th>
+                <th>total</th>
+                <th>Add</th>
+                <th>Minus</th>
+                
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr class="table-row" id="table-row" *ngFor="let item of cart; index as i">
+                <td>{{i+1}}</td>
+                <td>{{item.product.pid}}</td>
+                <td>{{item.product.name}}</td>
+                <td>{{item.product.category.name}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.product.price | currency}}</td>
+                <td>{{item.product.price * item.quantity |currency}}</td>
+                <td><button class="btn" (click)="addItem(item)">+</button></td>
+                <td><button class="btn btn-danger btn-cart" (click)="removeItem(item)">-</button></td>
+            </tr>
+        </tbody>
+
+        <span>Total: {{total | currency}}</span>
+    </table>
+
+    <button class="btn btn-success"(click)="billCheckout()">Checkout</button>
+
+</div>

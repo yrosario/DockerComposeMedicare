@@ -1,0 +1,22 @@
+<div class="card shadow-sm h-100" >
+    
+    <div class="card-body " id="prod-item">
+        <div class="prod-img" id="prod-img"><a [routerLink]="['/shop/product',product.pid]"><img [src]="image" [alt]="product.name" ></a></div>
+        <hr>
+        <strong id="prod-title">{{product.name}}</strong>
+        <p class="cart-text text-muted">{{product.brand}}</p>
+        <p class="cart-text text-muted" id="prod-category">{{product.category.name}}</p>
+        <strong > {{product.price | currency }}</strong>
+        
+        <div class="d-flex justify-content-between align-items-center">
+            
+            <div class="btn-group">
+                <button class="btn btn-primary" id="prod-cart-btn" (click)="addToCart()" [disabled]="isDisable"> Add </button>
+                <button class="btn btn-success" id="product-buy-btn" (click)="goToCart()">Buy</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+ <p class="bad-msg" id="bad-msg" *ngIf="product == null">Product does not exist!</p>

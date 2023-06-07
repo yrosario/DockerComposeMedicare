@@ -1,0 +1,53 @@
+ <!-- Product Management Page -->
+ <div class="manage-prod-div" id="manage-prod-div">
+    <p class="manage-prod-title" id="manage-prod-title">Manage Products</p>
+
+    <!-- Empty Product List display -->
+    <!-- <p class="empty-prod-list" id="empty-prod-list" *ngIf="products.length === 0">Product List is Empty</p> -->
+
+    <!-- List all products -->
+    <div class="list-prod-div" id="list-prod-div">
+        
+
+            <!-- Search bar -->
+    <div class="search-div input-group mb-3" id="search-div">
+        <button class="button add-user-btn btn btn-primary" id="add-user-btn" (click)="navigateProductEdit()">ADD</button>
+        <input type="text" class="search-box form-control" id="search-box" placeholder="Search ..." (keyup.enter)="searchTerm=search.value" #search>
+    </div>
+        
+        <table class="prod-table table table-hover table-striped" id="prod-table">
+            <thead>                 
+                <tr class="prod-header-row">
+                    <th>ID</th>
+                    <th> Image</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th> Edit</th>
+                    <th> Disable</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="prod-data-row" id="prod-data-row" *ngFor = "let product of products | category:'search':searchTerm">
+                    <td>{{product.pid}}</td>
+                    <td>
+                        <div class="img-div" id="img-div">
+                            <img [src]="findImage(product.pid)" style="width: 80px;">
+                        </div>
+                    </td>
+                    <td id="name">{{product.name}}</td>
+                    <td id="brand">{{product.brand}}</td>
+                    <td id="name">{{product.category.name}}</td>
+                    <td id="qty">{{product.qty}}</td>
+                    <td id="price">{{product.price | currency}}</td>
+                    <td id="edit-btn"><button class="prod-edit-btn btn btn-primary" id="prod-edit-btn" (click)="navigateProductEdit(product.pid)">Edit</button></td>
+                    <td *ngIf="product.active" id="enable-btn"><button class="prod-delete-btn btn btn-danger" id="prod-delete-btn" (click)="disableProduct(product)" >Disable</button></td>
+                    <td *ngIf="!product.active" id="disable-btn"><button class="prod-delete-btn btn btn-success" id="prod-delete-btn" (click)="disableProduct(product)">Enable</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ </div>

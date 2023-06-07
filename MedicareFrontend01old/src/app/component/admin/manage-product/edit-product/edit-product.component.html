@@ -1,0 +1,70 @@
+<!-- Edit product page -->
+<div class="edit-prod-div" id="edit-prod-div">
+
+
+
+    <!-- Form for product -->
+    <form class="prod-form mt-5" id="prod-form" (ngSubmit)="editProduct(prodForm)" #prodForm="ngForm">
+    
+                <!-- Page title -->
+        <h3 class="edit-prod-title h3" id="eidt-prod-title">Edit Product</h3>
+    
+        <!-- Product update operation status message -->
+        <div class="update-msg-div alert alert-danger" id="update-msg-div" *ngIf="isPostSucc === false || isImgPostSucc === false">
+            <p *ngIf="isPostSucc === false">{{postFailedMsg}}</p>
+            <p *ngIf="isImgPostSucc === false">{{postImgFailedMsg}}</p>
+        </div>
+
+        <!-- Success message -->
+        <div class="update-msg-succ-div alert alert-success" id="updat-msg-succ-div" *ngIf="isPostSucc || isImgPostSucc">
+            <p *ngIf="isPostSucc">{{postSuccMsg}} <a routerLink="/admin/manage-products">Go Product Admin Page</a></p>
+            <p *ngIf="isImgPostSucc">{{postImgSuccMsg}}</p>
+        </div>
+
+        <!-- Prod id -->
+        <label for="prod-id-lb" class="id-lb" id="id-lb"><strong id="prod-id">ID {{product.pid}} </strong> </label>
+        <br>
+
+        <!-- Prod name -->
+        <label for="prod-name" class="prod-name-lb" id="prod-name-lb">Name</label>
+        <input name="name" type="text" class="prod-name-input form-control" id="prod-name-input"  [ngModel]="product.name" required>
+        <br>
+
+        <!-- Prod Brand -->
+        <label for="prod-brand" class="prod-brand-lb" id="prod-brand-lb">Brand</label>
+        <input name="brand" type="text" class="prod-brand-input form-control" id="prod-brand-input" [ngModel]="product.brand" required>
+        <br>
+
+        <!-- Prod Category -->
+        <label for="prod-category" class="prod-category-lb" id="prod-category-lb">Category</label>
+        <select name="category" placeholder="Select Category" id="category-select" class="category-select form-select form-select-lg mb-3" [(ngModel)]="categoryId" required>
+            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+        <br>
+
+
+        <!--  Prod Price -->
+        <label for="price-category" class="prod-price-lb" id="prod-price-lb">Price</label>
+        <input name="price" type="number" class="prod-price-input form-control" id="prod-price-input" min = 0 [ngModel]="product.price" required>
+        <br>
+
+        <!-- Prod qty -->
+        <label for="prod-qty" class="prod-qty-lb" id="prod-qty-lb">Qty</label>
+        <input name="qty" type="number" class="prod-qty-input form-control " id="prod-qty-input" min=0 [ngModel]="product.qty" required>
+        <br>
+
+        <!-- File upload -->
+        <label for="file">Upload Image</label>
+        <input type="file" class="image-upload form-control form-control-lg " id="image-upload" (change)="onFileSelected($event)">
+
+        <!-- disable button -->
+        <button class="prod-submit-btn btn btn-danger btn-lg mt-2" id="prod-disable-btn" *ngIf="product.active" (click)="product.active = !product.active">Disable</button>
+        <button class="prod-submit-btn btn btn-success btn-lg mt-2" id="prod-enable-btn" *ngIf="!product.active" (click)="product.active = !product.active">Enable</button>
+
+        <!-- Submit button -->
+        <button class="prod-submit-btn btn btn-primary btn-lg mt-2" id="prod-submit-btn" [disabled]="!prodForm.valid">Update</button>
+
+    </form>
+
+</div>
+
