@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0.33
+    restart: always
+    volumes:
+      - mysql-volume:/var/lib/mysql
+    networks: 
+      - mednet
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'medicaredb'
+      MYSQL_USER: 'test'
+      MYSQL_ROOT_PASSWORD: "test"
+  bkserver:
+    build: .
+    networks:
+      - mednet
+    ports: 
+      - 8081:8081
+
+
+networks:
+  mednet:
+
+volumes:
+  mysql-volume:
