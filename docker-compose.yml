@@ -7,11 +7,14 @@ services:
       - mysql-volume:/var/lib/mysql
     networks: 
       - mednet
+    expose:
+      - 3306
     ports:
       - 3306:3306
     environment:
       MYSQL_DATABASE: 'medicaredb'
       MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'test'
       MYSQL_ROOT_PASSWORD: "test"
   bkserver:
     build: .
@@ -19,6 +22,9 @@ services:
       - mednet
     ports: 
       - 8081:8081
+    depends_on:
+      - db
+    
 
 
 networks:
